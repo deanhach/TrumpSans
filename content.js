@@ -1,6 +1,5 @@
 function sansify() {
-
-if (window.location.origin === "https://twitter.com") {
+	if (window.location.origin === "https://twitter.com") {
 
 		var tweets = document.querySelectorAll('.tweet')
 
@@ -17,9 +16,8 @@ if (window.location.origin === "https://twitter.com") {
 		}
 
 	}
-  else
-    {
-
+	else
+	{
 		var tweets = document.querySelectorAll('twitterwidget')
 		for (i = 0; i < tweets.length; ++i) {
 			var twitterHandle = tweets[i].shadowRoot.querySelector('.TweetAuthor-screenName');
@@ -32,11 +30,12 @@ if (window.location.origin === "https://twitter.com") {
 				}
 			}
 		}
-    }
+	}
 }
 
-// Reformat tweets after 1, 3, 5, and 10 seconds. Then just give up.
-window.setTimeout(sansify, 1000);
-window.setTimeout(sansify, 3000);
-window.setTimeout(sansify, 5000);
-window.setTimeout(sansify, 10000);
+var timer;
+
+new MutationObserver(function(mutations) {
+	clearTimeout(timer);
+	timer = setTimeout(sansify, 1000);
+}).observe(document.body, { childList: true, subtree: true });
