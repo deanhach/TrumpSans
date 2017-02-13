@@ -1,0 +1,22 @@
+{
+    "author": "",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "description": "Make DJT Tweets Comic Sans Again",
+    "manifest_version": 2,
+    "name": "Trump Sans",
+    "version": "1.2",
+    "-ms-preload": {
+        "backgroundScript": "backgroundScriptsAPIBridge.js",
+        "contentScript": "contentScriptsAPIBridge.js"
+    }
+}
